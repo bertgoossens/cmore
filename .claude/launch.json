@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "c-more",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "PORT=3010 $HOME/.nvm/versions/node/v22.11.0/bin/node server.js"],
+      "port": 3010
+    }
+  ]
+}

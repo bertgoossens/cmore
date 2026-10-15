@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>C-More — Middelkerke Leopoldlaan 268</title>
+<meta name="description" content="Geniet van een comfortabel verblijf aan de Belgische kust in dit recent vernieuwde en volledig ingerichte appartement aan de Leopoldlaan 268 in Middelkerke." />
+<link rel="icon" href="favicon.png" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="C-More" />
+<meta property="og:locale" content="nl_BE" />
+<meta property="og:title" content="C-More — Middelkerke Leopoldlaan 268" />
+<meta property="og:description" content="Geniet van een comfortabel verblijf aan de Belgische kust in dit recent vernieuwde en volledig ingerichte appartement aan de Leopoldlaan 268 in Middelkerke." />
+<meta property="og:image" content="images/zeedijk.jpg" />
+<link rel="stylesheet" href="fonts/fonts.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VacationRental",
+  "name": "C-More",
+  "description": "Geniet van een comfortabel verblijf aan de Belgische kust in dit recent vernieuwde en volledig ingerichte appartement aan de Leopoldlaan 268 in Middelkerke.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Leopoldlaan 268",
+    "postalCode": "8430",
+    "addressLocality": "Middelkerke",
+    "addressCountry": "BE"
+  },
+  "petsAllowed": true,
+  "containsPlace": {
+    "@type": "Accommodation",
+    "additionalType": "EntirePlace",
+    "occupancy": { "@type": "QuantitativeValue", "maxValue": 6 },
+    "numberOfBedrooms": 2,
+    "numberOfBathroomsTotal": 1
+  }
+}
+</script>
+<style>
+  :root{
+    /* Kleuren uit het C-More-logo */
+    --bg:#fbf8f1;
+    --surface:#ffffff;
+    --sand:#f5f0e7;
+    --sand-deep:#e2d5bf;
+    --navy:#234b63;
+    --navy-deep:#173f59;
+    --sea:#5d8ca2;
+    --sea-light:#e8eff2;
+    --accent:#a98b63;
+    --ink:#173246;
+    --muted:#5d6b74;
+    --line:#e8dfcf;
+    --shadow:0 18px 50px -22px rgba(23,63,89,.35);
+    --radius:18px;
+    --maxw:1180px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{
+    font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);
+    font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,.display{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.12;letter-spacing:-.01em}
+  h2{font-size:clamp(2rem,4vw,2.9rem)}
+  h3{font-size:1.3rem}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .section-pad{padding:110px 0}
+  .eyebrow{
+    display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:14px
+  }
+  .lead{font-size:1.15rem;color:var(--muted);max-width:640px}
+  .section-head{margin-bottom:48px}
+  .section-head.center{text-align:center}
+  .section-head.center .lead{margin:16px auto 0}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:999px;
+    font-weight:600;font-size:.98rem;border:0;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s
+  }
+  .btn-primary{background:var(--navy);color:#fff;box-shadow:var(--shadow)}
+  .btn-primary:hover{background:var(--navy-deep);transform:translateY(-2px)}
+  .btn-light{background:#fff;color:var(--navy-deep)}
+  .btn-light:hover{transform:translateY(-2px)}
+  .btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.5);backdrop-filter:blur(6px)}
+  .btn-ghost:hover{background:rgba(255,255,255,.24)}
+
+  /* Header */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(251,248,241,.94);backdrop-filter:blur(10px);transition:box-shadow .3s}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .brand{display:flex;align-items:center}
+  .brand img{height:58px;width:auto}
+  .menu{display:flex;align-items:center;gap:30px}
+  .menu a{color:var(--ink);font-size:.95rem;font-weight:500;transition:color .2s}
+  .menu a:hover{color:var(--navy)}
+  .menu .btn,.menu .btn:hover{color:#fff}
+  .menu .btn{padding:11px 22px}
+  header.scrolled{box-shadow:0 1px 0 var(--line)}
+  .burger{display:none;background:none;border:0;color:var(--ink);cursor:pointer;padding:6px}
+  .mobile-menu{
+    position:fixed;inset:0;background:var(--navy-deep);z-index:60;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:26px;opacity:0;pointer-events:none;transition:opacity .3s
+  }
+  .mobile-menu.open{opacity:1;pointer-events:auto}
+  .mobile-menu a{color:#fff;font-family:'Fraunces';font-size:1.8rem}
+  .mobile-menu .close{position:absolute;top:22px;right:22px;background:none;border:0;color:#fff;cursor:pointer}
+
+  /* Hero */
+  .hero{position:relative;min-height:92vh;min-height:92svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy-deep)}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:35% 55%}
+  .hero .wrap{position:relative;z-index:1;width:100%;padding-top:110px;padding-bottom:56px}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,38,0) 40%,rgba(10,26,38,.35) 65%,rgba(10,26,38,.78) 100%)}
+  .hero-eyebrow{display:block;font-size:.8rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#e6d3b3;margin-bottom:14px}
+  .hero h1{font-size:clamp(2.6rem,6.4vw,5.4rem);font-weight:400;color:#fff;max-width:900px;text-shadow:0 2px 24px rgba(10,26,38,.35)}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+
+  /* Intro */
+  .intro .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}
+  .intro p{color:var(--muted);margin-top:18px}
+  .intro p:first-of-type{font-family:'Fraunces',Georgia,serif;font-size:clamp(1.4rem,2.4vw,1.85rem);line-height:1.4;color:var(--ink);margin-top:0}
+  .intro-photo{position:relative}
+  .intro-photo img{border-radius:var(--radius);box-shadow:var(--shadow);aspect-ratio:4/5;object-fit:cover;object-position:50% 75%;width:100%;height:auto}
+
+  /* Rooms */
+  .rooms{background:var(--sand)}
+  .room-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .room{background:var(--surface);border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 30px -20px rgba(23,63,89,.35)}
+  .room img{aspect-ratio:4/3;object-fit:cover;width:100%}
+  .room-body{padding:24px 26px 28px}
+  .room-body h3{margin-bottom:8px}
+  .room-body p{color:var(--muted);font-size:.98rem}
+  .room-body ul{list-style:none;margin-top:12px;display:grid;gap:6px}
+  .room-body li{display:flex;gap:10px;font-size:.95rem;align-items:baseline}
+  .room-body li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent);transform:translateY(-2px)}
+
+  .rooms .wrap{display:grid;gap:56px}
+  .rooms-text{max-width:760px}
+  .rooms-text h2,.loc-text h2,.prac-text h2{margin-bottom:22px}
+  .rooms-text p,.loc-text p,.prac-text p{color:var(--muted);margin-top:14px;font-size:1.06rem}
+  .rooms-text ul{list-style:none;margin-top:12px;display:grid;gap:8px}
+  .rooms-text li{display:flex;gap:12px;align-items:baseline;font-size:1.06rem}
+  .rooms-text li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--accent);transform:translateY(-2px)}
+  .room-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .room-photos img{border-radius:var(--radius);aspect-ratio:4/3;object-fit:cover;width:100%;box-shadow:0 10px 30px -20px rgba(23,63,89,.35)}
+  .prac-text{max-width:760px;margin:0 auto;text-align:center}
+  .cta-quote{font-family:'Fraunces',Georgia,serif;font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.25;max-width:760px}
+  .cta .wrap p.cta-quote{font-size:clamp(1.6rem,3.4vw,2.5rem);opacity:1;max-width:760px}
+
+
+  /* Gallery */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px;justify-content:center}
+  .filters button{
+    border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:.92rem;
+    padding:9px 18px;border-radius:999px;cursor:pointer;transition:all .2s
+  }
+  .filters button:hover{border-color:var(--sea)}
+  .filters button.active{background:var(--navy);border-color:var(--navy);color:#fff}
+  .masonry{columns:3 280px;column-gap:16px}
+  .masonry button{
+    display:block;width:100%;margin-bottom:16px;border:0;padding:0;background:none;cursor:zoom-in;
+    border-radius:14px;overflow:hidden;break-inside:avoid
+  }
+  .masonry img{width:100%;height:auto;transition:transform .5s}
+  .masonry button:hover img{transform:scale(1.03)}
+  .masonry button[hidden]{display:none}
+
+  /* Lightbox */
+  .lightbox{position:fixed;inset:0;background:rgba(10,26,38,.94);z-index:80;display:none;align-items:center;justify-content:center}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:92vw;max-height:86vh;border-radius:10px}
+  .lightbox button{position:absolute;background:rgba(255,255,255,.12);border:0;color:#fff;width:52px;height:52px;border-radius:50%;cursor:pointer;font-size:1.5rem}
+  .lightbox button:hover{background:rgba(255,255,255,.24)}
+  .lb-close{top:20px;right:20px}
+  .lb-prev{left:20px;top:50%;transform:translateY(-50%)}
+  .lb-next{right:20px;top:50%;transform:translateY(-50%)}
+  .lb-count{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:rgba(255,255,255,.75);font-size:.9rem}
+
+  /* Amenities */
+  .amen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .amen{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .amen svg{flex:none;width:26px;height:26px;color:var(--navy)}
+  .amen span{font-weight:500}
+
+  /* Location */
+  .location{background:var(--sea-light)}
+  .loc-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+  .loc-list{list-style:none;margin-top:28px;display:grid;gap:4px}
+  .loc-list li{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid rgba(35,75,99,.15)}
+  .loc-list b{font-family:'Fraunces';font-weight:500;color:var(--navy);white-space:nowrap}
+  .loc-note{margin-top:24px;color:var(--muted)}
+  .map{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3;background:#e8eff2}
+  .map iframe{width:100%;height:100%;border:0}
+
+  /* Practical */
+  .prac-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .prac{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+  .prac h3{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .prac h3 svg{width:24px;height:24px;color:var(--accent)}
+  .prac p{color:var(--muted)}
+
+  /* CTA */
+  .cta{position:relative;color:#fff;background:var(--navy);overflow:hidden}
+  .cta .wrap{position:relative;z-index:1;padding:120px 24px}
+  .cta h2{max-width:640px;margin-bottom:18px}
+  .cta p{max-width:520px;opacity:.92;margin-bottom:32px;font-size:1.12rem}
+
+  /* Beschikbaarheid */
+  .avail{background:var(--sea-light)}
+  .cal-wrap{max-width:880px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:34px}
+  .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .cal-nav button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);cursor:pointer;font-size:1.3rem;color:var(--navy-deep);transition:.2s;display:flex;align-items:center;justify-content:center}
+  .cal-nav button:hover:not(:disabled){background:var(--sea-light);border-color:var(--navy)}
+  .cal-nav button:disabled{opacity:.35;cursor:not-allowed}
+  .cal-range{font-weight:600;color:var(--navy-deep);text-transform:capitalize}
+  .months{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .month h3{font-size:1.15rem;text-align:center;margin-bottom:14px;text-transform:capitalize}
+  .dow,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+  .dow span{text-align:center;font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;padding-bottom:6px}
+  .cday{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font:inherit;font-size:.9rem;border-radius:10px;font-weight:500;border:0;background:none;color:inherit;padding:0}
+  .cday.empty{visibility:hidden}
+  .cday.free{background:var(--sea-light);color:var(--navy-deep)}
+  .cday.booked{background:#f6ece6;color:#c4917a;text-decoration:line-through;text-decoration-thickness:1.5px}
+  .cday.past{color:#c5cdd2}
+  .cday.today{box-shadow:inset 0 0 0 2px var(--navy)}
+  .cal-legend{display:flex;gap:22px;justify-content:center;margin-top:26px;flex-wrap:wrap;font-size:.88rem;color:var(--muted)}
+  .cal-legend .item{display:flex;align-items:center;gap:8px}
+  .sw{width:16px;height:16px;border-radius:5px}
+  .sw.free{background:var(--sea-light);box-shadow:inset 0 0 0 1px var(--navy)}
+  .sw.booked{background:#f6ece6;box-shadow:inset 0 0 0 1px #c4917a}
+  .cal-status{text-align:center;margin-top:18px;font-size:.85rem;color:var(--muted)}
+  .cal-status .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#7bbf8f;margin-right:6px;vertical-align:middle}
+  .cal-status.demo .dot{background:var(--accent)}
+
+
+  footer{background:var(--sand);color:var(--muted);padding:56px 0;font-size:.92rem;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+  .foot-logo img{width:170px;height:auto}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+
+  @media (max-width:980px){
+    .intro .grid,.loc-grid{grid-template-columns:1fr;gap:50px}
+    .amen-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:760px){
+    body{font-size:16px}
+    .section-pad{padding:76px 0}
+    .wrap{padding:0 18px}
+    .menu{display:none}
+    .burger{display:block}
+    .hero{min-height:78svh}
+    .hero .wrap{padding-bottom:44px}
+    .brand img{height:42px}
+    .room-photos,.amen-grid{grid-template-columns:1fr}
+    .lb-prev,.lb-next{top:auto;bottom:14px;transform:none}
+    .lb-prev{left:14px}.lb-next{right:14px}
+    .cta .wrap{padding:84px 18px}
+    .months{grid-template-columns:1fr;gap:26px}
+    .cal-wrap{padding:24px 14px}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="C-More — naar boven"><img src="images/logo-mark.png" alt="C-More" width="960" height="561" /></a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#appartement">Appartement</a>
+      <a href="#fotos">Foto's</a>
+      <a href="#ligging">Ligging</a>
+      <a href="#praktisch">Praktisch</a>
+      <a href="#beschikbaarheid" class="btn btn-primary">Beschikbaarheid</a>
+    </nav>
+    <button class="burger" aria-label="Menu openen" id="burger">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="close" aria-label="Menu sluiten" id="menuClose">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <a href="#appartement">Appartement</a>
+  <a href="#fotos">Foto's</a>
+  <a href="#ligging">Ligging</a>
+  <a href="#praktisch">Praktisch</a>
+  <a href="#beschikbaarheid" class="btn btn-light">Beschikbaarheid</a>
+</div>
+
+<section class="hero" id="top">
+  <img class="hero-bg" src="images/zeedijk.jpg" alt="Zeedijk van Middelkerke met strandcabines bij zonsondergang" width="1448" height="1086" fetchpriority="high" />
+  <div class="wrap">
+    <span class="hero-eyebrow">C-More · Middelkerke</span>
+    <h1>Appartement aan zee</h1>
+    <div class="hero-ctas">
+      <a href="#beschikbaarheid" class="btn btn-light">Beschikbaarheid</a>
+      <a href="#fotos" class="btn btn-ghost">Foto's</a>
+    </div>
+  </div>
+</section>
+
+<section class="intro section-pad" id="appartement">
+  <div class="wrap grid">
+    <div class="reveal">
+      <p>Geniet van een comfortabel verblijf aan de Belgische kust in dit recent vernieuwde en volledig ingerichte appartement aan de Leopoldlaan 268 in Middelkerke. Dankzij de grote ramen aan de voorzijde is het appartement bijzonder licht en geniet je de hele dag van een aangename hoeveelheid zonlicht.</p>
+      <p>Het appartement biedt plaats aan maximum 6 personen en is ideaal voor een gezinsvakantie, een verblijf met vrienden of een ontspannen weekend aan zee.</p>
+    </div>
+    <div class="intro-photo reveal">
+      <img src="images/leefruimte.jpg" alt="Lichte leefruimte met ronde eettafel, zithoek en grote ramen" width="1067" height="1600" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<section class="rooms section-pad">
+  <div class="wrap">
+    <div class="rooms-text reveal">
+      <h2>Comfortabel verblijven</h2>
+      <p>De ruime leefruimte beschikt over een open, volledig uitgeruste keuken en een gezellige zithoek met Smart TV en wifi. Vanuit de leefruimte heb je een mooi uitzicht op een rustige villawijk.</p>
+      <p>Er zijn twee slaapkamers:</p>
+      <ul>
+        <li>Slaapkamer 1 met een dubbel bed (2,00 × 1,60 m)</li>
+        <li>Slaapkamer 2 met een dubbel bed (2,00 × 1,60 m) en een stapelbed (1,90 × 0,90 m)</li>
+      </ul>
+      <p>Verder beschikt het appartement over een moderne badkamer met inloopdouche en dubbele wastafel, een apart toilet en een balkon aan de achterzijde.</p>
+    </div>
+    <div class="room-photos reveal">
+      <img src="images/slaapkamer1-1.jpg" alt="Slaapkamer 1 met dubbel bed" loading="lazy" />
+      <img src="images/slaapkamer2-1.jpg" alt="Slaapkamer 2 met dubbel bed en stapelbed" loading="lazy" />
+      <img src="images/badkamer.jpg" alt="Moderne badkamer met inloopdouche en dubbele wastafel" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<section class="gallery section-pad" id="fotos">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <h2>Foto's</h2>
+    </div>
+    <div class="filters" role="group" aria-label="Filter foto's per ruimte">
+      <button class="active" data-filter="all">Alles</button>
+      <button data-filter="leefruimte">Leefruimte</button>
+      <button data-filter="keuken">Keuken</button>
+      <button data-filter="slaapkamers">Slaapkamers</button>
+      <button data-filter="badkamer">Badkamer</button>
+      <button data-filter="buiten">Balkon &amp; buiten</button>
+    </div>
+    <div class="masonry" id="masonry">
+      <button data-cat="leefruimte"><img src="images/leefruimte.jpg" alt="Lichte leefruimte met ronde eettafel en zithoek" loading="lazy" /></button>
+      <button data-cat="leefruimte"><img src="images/woonkamer-1.jpg" alt="Open leefruimte met zithoek en keuken" loading="lazy" /></button>
+      <button data-cat="leefruimte"><img src="images/woonkamer-2.jpg" alt="Woonkamer" loading="lazy" /></button>
+      <button data-cat="leefruimte"><img src="images/maanspiegel.jpg" alt="Gang met maanvormige spiegel en houten wandplankje" loading="lazy" /></button>
+      <button data-cat="slaapkamers"><img src="images/slaapkamer1-2.jpg" alt="Slaapkamer 1" loading="lazy" /></button>
+      <button data-cat="keuken"><img src="images/keuken-1.jpg" alt="Volledig uitgeruste keuken" loading="lazy" /></button>
+      <button data-cat="leefruimte"><img src="images/woonkamer-3.jpg" alt="Woonkamer" loading="lazy" /></button>
+      <button data-cat="badkamer"><img src="images/badkamer.jpg" alt="Badkamer met dubbele wastafel" loading="lazy" /></button>
+      <button data-cat="leefruimte"><img src="images/eetkamer-1.jpg" alt="Eethoek" loading="lazy" /></button>
+      <button data-cat="slaapkamers"><img src="images/slaapkamer2-1.jpg" alt="Slaapkamer 2" loading="lazy" /></button>
+      <button data-cat="keuken"><img src="images/keuken-2.jpg" alt="Keuken" loading="lazy" /></button>
+      <button data-cat="leefruimte"><img src="images/woonkamer-4.jpg" alt="Woonkamer" loading="lazy" /></button>
+      <button data-cat="buiten"><img src="images/balkon-1.jpg" alt="Balkon aan de achterzijde" loading="lazy" /></button>
+      <button data-cat="slaapkamers"><img src="images/slaapkamer1-3.jpg" alt="Slaapkamer 1" loading="lazy" /></button>
+      <button data-cat="leefruimte"><img src="images/woonkamer-6.jpg" alt="Eethoek met sfeerlamp" loading="lazy" /></button>
+      <button data-cat="keuken"><img src="images/keuken-3.jpg" alt="Keuken" loading="lazy" /></button>
+      <button data-cat="slaapkamers"><img src="images/slaapkamer2-2.jpg" alt="Slaapkamer 2" loading="lazy" /></button>
+      <button data-cat="leefruimte"><img src="images/eetkamer-2.jpg" alt="Eethoek" loading="lazy" /></button>
+      <button data-cat="badkamer"><img src="images/badkamer-3.jpg" alt="Inloopdouche" loading="lazy" /></button>
+      <button data-cat="slaapkamers"><img src="images/slaapkamer1-4.jpg" alt="Slaapkamer 1" loading="lazy" /></button>
+      <button data-cat="keuken"><img src="images/keuken-4.jpg" alt="Keuken" loading="lazy" /></button>
+      <button data-cat="slaapkamers"><img src="images/slaapkamer2-3.jpg" alt="Slaapkamer 2 met stapelbed" loading="lazy" /></button>
+      <button data-cat="leefruimte"><img src="images/eetkamer-3.jpg" alt="Eethoek" loading="lazy" /></button>
+      <button data-cat="badkamer"><img src="images/badkamer-4.jpg" alt="Badkamer" loading="lazy" /></button>
+      <button data-cat="slaapkamers"><img src="images/slaapkamer1-5.jpg" alt="Slaapkamer 1" loading="lazy" /></button>
+      <button data-cat="keuken"><img src="images/keuken-5.jpg" alt="Keuken" loading="lazy" /></button>
+      <button data-cat="leefruimte"><img src="images/extra-1.jpg" alt="Inkomhal" loading="lazy" /></button>
+      <button data-cat="slaapkamers"><img src="images/slaapkamer2-4.jpg" alt="Slaapkamer 2" loading="lazy" /></button>
+      <button data-cat="badkamer"><img src="images/badkamer-5.jpg" alt="Badkamer" loading="lazy" /></button>
+      <button data-cat="slaapkamers"><img src="images/slaapkamer1-6.jpg" alt="Slaapkamer 1" loading="lazy" /></button>
+      <button data-cat="leefruimte"><img src="images/extra-2.jpg" alt="Speelgoed en spelletjes voor kinderen" loading="lazy" /></button>
+      <button data-cat="slaapkamers"><img src="images/slaapkamer2-5.jpg" alt="Slaapkamer 2" loading="lazy" /></button>
+      <button data-cat="badkamer"><img src="images/badkamer-6.jpg" alt="Badkamer" loading="lazy" /></button>
+      <button data-cat="leefruimte"><img src="images/extra-3.jpg" alt="Wandrekken met plant" loading="lazy" /></button>
+      <button data-cat="badkamer"><img src="images/badkamer-7.jpg" alt="Apart toilet" loading="lazy" /></button>
+      <button data-cat="buiten"><img src="images/buiten-1.jpg" alt="Gevel van het gebouw aan de Leopoldlaan" loading="lazy" /></button>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto vergroot">
+  <img id="lbImg" alt="" />
+  <button class="lb-close" id="lbClose" aria-label="Sluiten">✕</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Vorige foto">‹</button>
+  <button class="lb-next" id="lbNext" aria-label="Volgende foto">›</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
+<section class="location section-pad" id="ligging">
+  <div class="wrap loc-grid">
+    <div class="loc-text reveal">
+      <h2>Alles binnen handbereik</h2>
+      <p>De ligging is ideaal voor wie graag alles dichtbij heeft. De zeedijk ligt op slechts 1 minuut wandelen en de tramhalte bevindt zich op ongeveer 100 meter. In de directe omgeving vind je bovendien winkels en gezellige horecazaken.</p>
+      <p>Een delicatessenzaak bevindt zich zelfs onder het appartement, met onder andere brood, vleeswaren en tapas.</p>
+      <p>Ook het casino ligt op ongeveer 800 meter en het Vita Krokodiel-sport- en zwemcomplex op ongeveer 1 km.</p>
+    </div>
+    <div class="map reveal">
+      <iframe title="Kaart: Leopoldlaan 268, Middelkerke" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Leopoldlaan%20268%2C%208430%20Middelkerke&z=15&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="amenities section-pad">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <h2>Voorzieningen</h2>
+      <p class="lead">Het appartement is voorzien van:</p>
+    </div>
+    <div class="amen-grid reveal">
+      <div class="amen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 8h16M8 13h.01M12 13h.01M16 13h.01M8 17h8"/></svg><span>Vaatwasser</span></div>
+      <div class="amen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><rect x="6" y="8" width="9" height="9" rx="1"/><path d="M18 9v.01M18 13v.01"/></svg><span>Combi-oven</span></div>
+      <div class="amen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 9h14M9 5v2M9 12v4"/></svg><span>Koelkast met vriesvak</span></div>
+      <div class="amen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11h12v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M17 13h1.5a2.5 2.5 0 0 1 0 5H17M8 3c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3"/></svg><span>Waterkoker en koffieapparaat</span></div>
+      <div class="amen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9a5 5 0 0 1 9.6-2H20v4h-5.4A5 5 0 0 1 5 9z"/><path d="M8 13l1.5 8h2L12 14"/></svg><span>Haardroger</span></div>
+      <div class="amen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01"/></svg><span>Wifi</span></div>
+      <div class="amen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span>Smart TV</span></div>
+      <div class="amen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18v7H3zM3 10V7M21 10V7M5 17v3M19 17v3M8 10V8M12 10V8M16 10V8"/></svg><span>Babyreisbedje en kinderstoel</span></div>
+      <div class="amen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 2v20M8 9l-1.5 2h3zM16 15l-1.5-2h3z"/></svg><span>Lift/traphal</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="practical section-pad" id="praktisch">
+  <div class="wrap">
+    <div class="prac-text reveal">
+      <h2>Praktisch</h2>
+      <p>Bij aankomst zijn de bedden, het bad- en keukenlinnen zelf te voorzien. Roken is niet toegestaan in het appartement. Kleine huisdieren zijn welkom. Rondom het appartement zijn openbare parkeerplaatsen beschikbaar.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <p class="cta-quote">Een lichte, moderne en comfortabele uitvalsbasis op wandelafstand van zee — ideaal om volop van Middelkerke en de kust te genieten.</p>
+    <a href="#beschikbaarheid" class="btn btn-light">Beschikbaarheid</a>
+  </div>
+</section>
+
+<section class="avail section-pad" id="beschikbaarheid">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <h2>Beschikbaarheid</h2>
+    </div>
+    <div class="cal-wrap reveal">
+      <div class="cal-nav">
+        <button type="button" id="calPrev" aria-label="Vorige maanden">&lsaquo;</button>
+        <div class="cal-range" id="calRange" aria-live="polite"></div>
+        <button type="button" id="calNext" aria-label="Volgende maanden">&rsaquo;</button>
+      </div>
+      <div class="months" id="calMonths"></div>
+      <div class="cal-legend">
+        <div class="item"><span class="sw free"></span> Vrij</div>
+        <div class="item"><span class="sw booked"></span> Bezet</div>
+      </div>
+      <div class="cal-status" id="calStatus"><span class="dot"></span> Beschikbaarheid laden…</div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="foot-logo" aria-label="C-More — naar boven"><img src="images/logo.png" alt="C-More — appartement aan zee, Middelkerke" width="960" height="779" loading="lazy" /></a>
+    <div>Leopoldlaan 268 · 8430 Middelkerke</div>
+    <div>© <span id="year">2026</span> C-More</div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

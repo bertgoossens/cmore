@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbf8f1"/><stop offset="1" stop-color="#f5f0e7"/></linearGradient>
+ <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#315c75"/><stop offset=".55" stop-color="#173f59"/><stop offset="1" stop-color="#234b63"/></linearGradient>
+ <linearGradient id="sand"><stop stop-color="#c6ad88"/><stop offset=".55" stop-color="#a98b63"/><stop offset="1" stop-color="#d1b994"/></linearGradient>
+</defs>
+<rect width="1536" height="1024" fill="url(#bg)"/>
+<path d="M637 310 A150 150 0 0 1 762 150 M800 151 A150 150 0 0 1 923 309" fill="none" stroke="url(#sand)" stroke-width="5.5" stroke-linecap="round"/>
+<path d="M779 131 L779 321 L709 298 Z M792 155 Q823 226 839 324 L793 309 Z" fill="url(#blue)"/>
+<path d="M786 139 L786 321" fill="none" stroke="#f7f3eb" stroke-width="3"/>
+<path d="M710 302 Q757 307 849 327 L838 337 Q781 326 701 312 Z" fill="url(#blue)"/>
+<path d="M476 378 C554 361 616 312 689 310 C759 308 807 348 876 366 C944 384 1007 376 1068 339 C1006 390 943 404 874 387 C798 368 755 335 688 339 C617 342 553 383 476 378 Z" fill="url(#blue)"/>
+<path d="M578 390 C648 357 704 353 759 371 C817 390 864 418 923 405 C887 423 837 427 781 405 C710 378 651 369 578 390 Z" fill="#5d8ca2"/>
+<path d="M941 194 Q968 177 987 190 Q1004 169 1029 166 Q1007 181 994 202 Q971 184 941 194 Z M978 244 Q1001 229 1018 240 Q1036 221 1058 220 Q1037 233 1025 251 Q1005 236 978 244 Z" fill="url(#sand)"/>
+<path d="M489 436 C447 407 391 431 362 477 C330 528 344 588 388 625 C422 654 466 657 511 628 C475 665 422 673 379 649 C321 617 304 552 329 496 C354 441 415 410 467 426 C477 429 484 432 489 436 Z" fill="url(#sand)"/>
+<text x="520" y="638" font-family="Bodoni 72, Didot, 'Times New Roman', serif" font-size="282" fill="url(#blue)" letter-spacing="-10">-More</text>
+<line x1="375" y1="716" x2="707" y2="716" stroke="url(#sand)" stroke-width="3"/><line x1="829" y1="716" x2="1142" y2="716" stroke="url(#sand)" stroke-width="3"/>
+<g transform="translate(768 716)" fill="none" stroke="url(#sand)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M-25 14 Q-31-8-18-19 Q-13-24-8-17 Q-3-27 2-18 Q8-28 13-17 Q21-22 24-12 Q30 0 20 14 Q0 29-25 14 Z"/>
+<path d="M-22-10 L-9 15 M-13-18 L-3 18 M-4-18 L1 20 M6-18 L5 19 M15-16 L10 17 M23-9 L14 14 M-25 14 Q0 22 20 14"/>
+</g>
+<text x="768" y="807" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="43" letter-spacing="12" fill="#214a63">APPARTEMENT AAN ZEE</text>
+<text x="768" y="875" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="31" letter-spacing="14" fill="#b2956c">MIDDELKERKE</text>
+</svg>
