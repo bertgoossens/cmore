@@ -235,6 +235,25 @@
   .cal-status.demo .dot{background:var(--accent)}
 
 
+  /* Contactformulier */
+  .contact-form{max-width:760px;margin:0 auto;background:var(--sand);border:1px solid var(--line);border-radius:var(--radius);padding:44px}
+  .contact-form h2{margin-bottom:26px}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-grid .full{grid-column:1/-1}
+  .field label{display:block;font-size:.8rem;font-weight:600;letter-spacing:.04em;margin-bottom:5px}
+  .field input,.field select,.field textarea{width:100%;font:inherit;font-size:.98rem;padding:11px 13px;border:1px solid var(--sand-deep);border-radius:10px;background:#fff;color:var(--ink)}
+  .field textarea{min-height:110px;resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy)}
+  .field.invalid input{border-color:#cf6a63}
+  .field.check{display:flex;align-items:center;gap:10px;align-self:end;padding-bottom:12px}
+  .field.check input{width:20px;height:20px;accent-color:var(--navy);flex:none}
+  .field.check label{margin:0;font-size:.95rem;font-weight:500;letter-spacing:0}
+  .form-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .form-msg{font-size:.92rem;font-weight:500;color:#b5574f}
+  .form-msg.ok{color:#2f7d4f}
+  .form-note{font-size:.85rem;color:var(--muted);margin-top:14px}
+  .form-note a{text-decoration:underline}
+
   footer{background:var(--sand);color:var(--muted);padding:56px 0;font-size:.92rem;border-top:1px solid var(--line)}
   footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
   .foot-logo img{width:170px;height:auto}
@@ -265,6 +284,9 @@
     .cta .wrap{padding:84px 18px}
     .months{grid-template-columns:1fr;gap:26px}
     .cal-wrap{padding:24px 14px}
+    .contact-form{padding:28px 18px}
+    .form-grid{grid-template-columns:1fr}
+    .field.check{padding-bottom:0}
   }
 </style>
 </head>
@@ -278,7 +300,8 @@
       <a href="#fotos">Foto's</a>
       <a href="#ligging">Ligging</a>
       <a href="#praktisch">Praktisch</a>
-      <a href="#beschikbaarheid" class="btn btn-primary">Beschikbaarheid</a>
+      <a href="#beschikbaarheid">Beschikbaarheid</a>
+      <a href="#contact" class="btn btn-primary">Contact</a>
     </nav>
     <button class="burger" aria-label="Menu openen" id="burger">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -294,7 +317,8 @@
   <a href="#fotos">Foto's</a>
   <a href="#ligging">Ligging</a>
   <a href="#praktisch">Praktisch</a>
-  <a href="#beschikbaarheid" class="btn btn-light">Beschikbaarheid</a>
+  <a href="#beschikbaarheid">Beschikbaarheid</a>
+  <a href="#contact" class="btn btn-light">Contact</a>
 </div>
 
 <section class="hero" id="top">
@@ -475,6 +499,30 @@
   </div>
 </section>
 
+
+<section class="contact section-pad" id="contact">
+  <div class="wrap">
+    <form class="contact-form reveal" id="contactForm" novalidate>
+      <h2>Contact</h2>
+      <div class="form-grid">
+        <div class="field"><label for="fIn">Aankomst</label><input type="date" id="fIn" name="checkIn"></div>
+        <div class="field"><label for="fOut">Vertrek</label><input type="date" id="fOut" name="checkOut"></div>
+        <div class="field"><label for="fGuests">Aantal personen</label>
+          <select id="fGuests" name="guests"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select></div>
+        <div class="field check"><input type="checkbox" id="fPets" name="pets"><label for="fPets">Met een klein huisdier</label></div>
+        <div class="field"><label for="fName">Naam</label><input type="text" id="fName" name="name" autocomplete="name" required maxlength="100"></div>
+        <div class="field"><label for="fEmail">E-mail</label><input type="email" id="fEmail" name="email" autocomplete="email" required maxlength="200"></div>
+        <div class="field full"><label for="fPhone">Telefoon (optioneel)</label><input type="tel" id="fPhone" name="phone" autocomplete="tel" maxlength="40"></div>
+        <div class="field full"><label for="fMsg">Bericht</label><textarea id="fMsg" name="message" maxlength="2000"></textarea></div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Verstuur via je e-mailprogramma</button>
+        <span class="form-msg" id="formMsg" role="status"></span>
+      </div>
+      <p class="form-note">Je e-mailprogramma opent met een ingevuld bericht aan <a href="mailto:joke_wouters@hotmail.com">joke_wouters@hotmail.com</a>. Pas het gerust aan voor je het verstuurt.</p>
+    </form>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">

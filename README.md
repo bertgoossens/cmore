@@ -15,7 +15,7 @@ cmore/
 ├── brand/              # logo (origineel)
 └── public/
     ├── index.html       # de volledige website
-    ├── site.js          # menu, galerij, kalender
+    ├── site.js          # menu, galerij, kalender, contactformulier
     ├── images/          # foto's en logo
     └── fonts/           # Fraunces en Inter, lokaal gehost
 ```
@@ -47,6 +47,12 @@ Zonder `ICAL_FEEDS` werkt de kalender nog, maar toont ze enkel `direct-bookings.
 Airbnb → **Agenda** → kies het appartement → **Beschikbaarheid** → **Agenda's koppelen** →
 **Agenda exporteren** → kopieer de link. Deel die link niet publiek: daarom staat hij enkel
 server-side en nooit in de frontend.
+
+## Contactformulier
+
+Het formulier onderaan de site heeft geen server nodig: het stelt een `mailto:`-link samen en
+opent het e-mailprogramma van de bezoeker met een ingevuld bericht aan
+`joke_wouters@hotmail.com` (instelbaar via `MAIL_TO` in `public/site.js`).
 
 ## Rechtstreekse boekingen
 

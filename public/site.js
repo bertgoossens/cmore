@@ -155,3 +155,49 @@ fetch('/api/availability', { cache: 'no-store' })
   .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(data => { loadBookings(data); calStatus = data.synced ? 'ok' : 'manual'; renderCalendar(); })
   .catch(() => { calStatus = 'error'; renderCalendar(); });
+
+// ---- Contactformulier ----
+// Geen server nodig: het formulier stelt een mailto-link samen en opent het e-mailprogramma van de bezoeker.
+const MAIL_TO = 'joke_wouters@hotmail.com';
+const contactForm = document.getElementById('contactForm');
+const fIn = document.getElementById('fIn'), fOut = document.getElementById('fOut');
+const formMsg = document.getElementById('formMsg');
+const fmtDate = s => s ? fromIso(s).toLocaleDateString('nl-BE', { day: 'numeric', month: 'long', year: 'numeric' }) : '-';
+fIn.min = todayIso;
+fIn.addEventListener('change', () => {
+  fOut.min = fIn.value ? addDays(fIn.value, 1) : todayIso;
+  if (fIn.value && fOut.value && fOut.value <= fIn.value) fOut.value = addDays(fIn.value, 1);
+});
+
+contactForm.addEventListener('submit', e => {
+  e.preventDefault();
+  contactForm.querySelectorAll('.field').forEach(f => f.classList.remove('invalid'));
+  const f = contactForm.elements;
+  const bad = [];
+  if (f.name.value.trim().length < 2) bad.push(f.name);
+  if (!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(f.email.value.trim())) bad.push(f.email);
+  if (fIn.value && fOut.value && fOut.value <= fIn.value) bad.push(fOut);
+  if (bad.length) {
+    bad.forEach(el => el.closest('.field').classList.add('invalid'));
+    bad[0].focus();
+    formMsg.className = 'form-msg';
+    formMsg.textContent = 'Controleer de gemarkeerde velden.';
+    return;
+  }
+  const periode = fIn.value ? `${fmtDate(fIn.value)} – ${fmtDate(fOut.value)}` : 'nog niet gekozen';
+  const subject = 'Aanvraag C-More' + (fIn.value ? ` ${fmtDate(fIn.value)} – ${fmtDate(fOut.value)}` : '');
+  const body = [
+    f.message.value.trim(),
+    '',
+    `Periode: ${periode}`,
+    `Aantal personen: ${f.guests.value}`,
+    `Huisdier: ${f.pets.checked ? 'ja' : 'nee'}`,
+    '',
+    `Naam: ${f.name.value.trim()}`,
+    `E-mail: ${f.email.value.trim()}`,
+    `Telefoon: ${f.phone.value.trim() || '-'}`,
+  ].join('\n').trim();
+  window.location.href = `mailto:${MAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  formMsg.className = 'form-msg ok';
+  formMsg.textContent = 'Je e-mailprogramma wordt geopend. Vergeet niet op verzenden te klikken.';
+});
