@@ -90,8 +90,13 @@ const todayIso = iso(today);
 
 // ---- Beschikbaarheidskalender ----
 // In iCal is de einddatum de vertrekdag: die dag is dus niet bezet (de volgende gast kan dan aankomen).
+// Klik een aankomst- en een vertrekdag aan; die komen meteen in het contactformulier.
+const fIn = document.getElementById('fIn'), fOut = document.getElementById('fOut');
+const fmtDay = s => fromIso(s).toLocaleDateString('nl-BE', { weekday: 'short', day: 'numeric', month: 'long' });
+const nightsBetween = (a, b) => Math.round((fromIso(b) - fromIso(a)) / 864e5);
 let bookedSet = new Set();
 let calStatus = 'loading';
+let selIn = null, selOut = null;
 const view = new Date(today); view.setDate(1);
 
 function loadBookings(data) {
@@ -99,6 +104,24 @@ function loadBookings(data) {
   (data.booked || []).forEach(b => {
     for (let d = b.start; d < b.end; d = addDays(d, 1)) bookedSet.add(d);
   });
+}
+
+// Is er een bezette nacht tussen aankomst en vertrek?
+function overlapsBooking(a, b) {
+  for (let d = a; d < b; d = addDays(d, 1)) if (bookedSet.has(d)) return true;
+  return false;
+}
+
+function pickDay(k) {
+  if (!selIn || selOut || k <= selIn || overlapsBooking(selIn, k)) {
+    selIn = k; selOut = null;
+  } else {
+    selOut = k;
+  }
+  fIn.value = selIn || '';
+  fOut.value = selOut || '';
+  fOut.min = addDays(selIn, 1);
+  renderCalendar();
 }
 
 function month(base) {
@@ -114,11 +137,23 @@ function month(base) {
   for (let day = 1; day <= dim; day++) {
     const k = iso(new Date(y, m, day));
     const label = fromIso(k).toLocaleDateString('nl-BE', { weekday: 'long', day: 'numeric', month: 'long' });
-    const c = document.createElement('div');
-    if (k < todayIso) c.className = 'cday past';
-    else if (bookedSet.has(k)) { c.className = 'cday booked'; c.title = 'Bezet'; c.setAttribute('aria-label', label + ', bezet'); }
-    else { c.className = 'cday free'; c.title = 'Vrij'; c.setAttribute('aria-label', label + ', vrij'); }
+    // Een bezette dag mag wel de vertrekdag zijn, als alle nachten ervoor vrij zijn.
+    const canCheckout = selIn && !selOut && k > selIn && !overlapsBooking(selIn, k);
+    let c;
+    if (k < todayIso) {
+      c = document.createElement('div'); c.className = 'cday past';
+    } else if (bookedSet.has(k) && !canCheckout) {
+      c = document.createElement('div'); c.className = 'cday booked'; c.title = 'Bezet';
+      c.setAttribute('aria-label', label + ', bezet');
+    } else {
+      c = document.createElement('button'); c.type = 'button';
+      c.className = 'cday ' + (bookedSet.has(k) ? 'booked checkout' : 'free');
+      c.setAttribute('aria-label', label + (bookedSet.has(k) ? ', enkel als vertrekdag' : ', vrij'));
+      c.addEventListener('click', () => pickDay(k));
+    }
     c.textContent = day;
+    if (k === selIn || k === selOut) { c.classList.add('sel'); c.setAttribute('aria-pressed', 'true'); }
+    else if (selIn && selOut && k > selIn && k < selOut) c.classList.add('in-range');
     if (k === todayIso) c.classList.add('today');
     g.appendChild(c);
   }
@@ -135,6 +170,19 @@ function renderCalendar() {
   const first = new Date(today); first.setDate(1);
   document.getElementById('calPrev').disabled = view <= first;
 
+  const pick = document.getElementById('calPick');
+  pick.replaceChildren();
+  if (selIn && selOut) {
+    const n = nightsBetween(selIn, selOut);
+    pick.append(`${fmtDay(selIn)} → ${fmtDay(selOut)} · ${n} ${n === 1 ? 'nacht' : 'nachten'} · `);
+    const a = document.createElement('a'); a.href = '#contact'; a.textContent = 'Vraag deze periode aan →';
+    pick.appendChild(a);
+  } else if (selIn) {
+    pick.textContent = `Aankomst ${fmtDay(selIn)} — kies nu je vertrekdag.`;
+  } else {
+    pick.textContent = 'Klik op je aankomstdag en daarna op je vertrekdag.';
+  }
+
   const s = document.getElementById('calStatus');
   s.className = 'cal-status' + (calStatus === 'ok' ? '' : ' demo');
   s.innerHTML = '<span class="dot"></span> ';
@@ -149,7 +197,21 @@ function renderCalendar() {
 document.getElementById('calPrev').addEventListener('click', () => { view.setMonth(view.getMonth() - 1); renderCalendar(); });
 document.getElementById('calNext').addEventListener('click', () => { view.setMonth(view.getMonth() + 1); renderCalendar(); });
 
-// ---- Start ----
+// Datums in het formulier aanpassen werkt ook de kalender bij.
+function syncFromForm() {
+  selIn = fIn.value || null;
+  selOut = selIn && fOut.value > selIn ? fOut.value : null;
+  if (selIn) { const v = fromIso(selIn); view.setFullYear(v.getFullYear(), v.getMonth(), 1); }
+  renderCalendar();
+}
+fIn.min = todayIso;
+fIn.addEventListener('change', () => {
+  fOut.min = fIn.value ? addDays(fIn.value, 1) : todayIso;
+  if (fIn.value && fOut.value && fOut.value <= fIn.value) fOut.value = addDays(fIn.value, 1);
+  syncFromForm();
+});
+fOut.addEventListener('change', syncFromForm);
+
 renderCalendar();
 fetch('/api/availability', { cache: 'no-store' })
   .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -160,14 +222,8 @@ fetch('/api/availability', { cache: 'no-store' })
 // Geen server nodig: het formulier stelt een mailto-link samen en opent het e-mailprogramma van de bezoeker.
 const MAIL_TO = 'joke_wouters@hotmail.com';
 const contactForm = document.getElementById('contactForm');
-const fIn = document.getElementById('fIn'), fOut = document.getElementById('fOut');
 const formMsg = document.getElementById('formMsg');
 const fmtDate = s => s ? fromIso(s).toLocaleDateString('nl-BE', { day: 'numeric', month: 'long', year: 'numeric' }) : '-';
-fIn.min = todayIso;
-fIn.addEventListener('change', () => {
-  fOut.min = fIn.value ? addDays(fIn.value, 1) : todayIso;
-  if (fIn.value && fOut.value && fOut.value <= fIn.value) fOut.value = addDays(fIn.value, 1);
-});
 
 contactForm.addEventListener('submit', e => {
   e.preventDefault();

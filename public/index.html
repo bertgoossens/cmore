@@ -221,7 +221,11 @@
   .dow span{text-align:center;font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;padding-bottom:6px}
   .cday{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font:inherit;font-size:.9rem;border-radius:10px;font-weight:500;border:0;background:none;color:inherit;padding:0}
   .cday.empty{visibility:hidden}
-  .cday.free{background:var(--sea-light);color:var(--navy-deep)}
+  .cday.free{background:var(--sea-light);color:var(--navy-deep);cursor:pointer;transition:.15s}
+  .cday.free:hover{background:var(--sea);color:#fff}
+  .cday.checkout{cursor:pointer;text-decoration:none}
+  .cday.in-range{background:#cfdde4;color:var(--navy-deep)}
+  .days .cday.sel{background:var(--navy);color:#fff;text-decoration:none}
   .cday.booked{background:#f6ece6;color:#c4917a;text-decoration:line-through;text-decoration-thickness:1.5px}
   .cday.past{color:#c5cdd2}
   .cday.today{box-shadow:inset 0 0 0 2px var(--navy)}
@@ -229,8 +233,11 @@
   .cal-legend .item{display:flex;align-items:center;gap:8px}
   .sw{width:16px;height:16px;border-radius:5px}
   .sw.free{background:var(--sea-light);box-shadow:inset 0 0 0 1px var(--navy)}
+  .sw.sel{background:var(--navy)}
   .sw.booked{background:#f6ece6;box-shadow:inset 0 0 0 1px #c4917a}
-  .cal-status{text-align:center;margin-top:18px;font-size:.85rem;color:var(--muted)}
+  .cal-pick{text-align:center;margin-top:18px;font-weight:500;color:var(--navy-deep);min-height:1.6em}
+  .cal-pick a{text-decoration:underline}
+  .cal-status{text-align:center;margin-top:8px;font-size:.85rem;color:var(--muted)}
   .cal-status .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#7bbf8f;margin-right:6px;vertical-align:middle}
   .cal-status.demo .dot{background:var(--accent)}
 
@@ -492,8 +499,10 @@
       <div class="months" id="calMonths"></div>
       <div class="cal-legend">
         <div class="item"><span class="sw free"></span> Vrij</div>
+        <div class="item"><span class="sw sel"></span> Jouw keuze</div>
         <div class="item"><span class="sw booked"></span> Bezet</div>
       </div>
+      <div class="cal-pick" id="calPick" aria-live="polite"></div>
       <div class="cal-status" id="calStatus"><span class="dot"></span> Beschikbaarheid laden…</div>
     </div>
   </div>
